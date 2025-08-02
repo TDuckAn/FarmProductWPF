@@ -1,0 +1,118 @@
+﻿using FarmProductsWPF_BOs;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FarmProductsWPF_DAOs
+{
+    public class OrderDAO
+    {
+        private readonly FarmProductsDbContext _context;
+        private static OrderDAO? _instance;
+
+        public OrderDAO()
+        {
+            _context = new FarmProductsDbContext();
+        }
+
+        public static OrderDAO Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new OrderDAO();
+                }
+                return _instance;
+            }
+        }
+
+        public List<Order> GetAllOrders()
+        {
+            return _context.Orders
+                .Include(o => o.OrderDetails)
+                .Include(o => o.Staff)
+                .OrderByDescending(o => o.OrderId)
+                .ThenByDescending(o => o.OrderDate)
+                .ToList();
+        }
+
+        public List<Order> GetOrdersByAccountId(int accountId)
+        {
+            return _context.Orders
+                .Include(o => o.OrderDetails)
+                .Include(o => o.Staff)
+                .Where(o => o.CustomerId == accountId)
+                .OrderByDescending(o => o.OrderId)
+                .ThenByDescending(o => o.OrderDate)
+                .ToList();
+        }
+
+        public List<Order> SearchOrdersByAccountId(int accountId, string searchTerm)
+        {
+            bool isDate = DateTime.TryParse(searchTerm, out DateTime parsedDate);
+            return _context.Orders
+                .Include(o => o.OrderDetails)
+                .Include(o => o.Staff)
+                .Where(o => o.CustomerId == accountId)
+                .Where(o =>
+                    o.OrderId.ToString() == searchTerm ||
+                    (o.Staff != null && o.Staff.FullName.ToLower().Contains(searchTerm.ToLower())) ||
+                    o.OrderDetails.Any(od => od.Product.ProductName.ToLower().Contains(searchTerm.ToLower())) ||
+                    (isDate && o.OrderDate.HasValue && o.OrderDate.Value.Date == parsedDate.Date)
+                )
+                .OrderByDescending(o => o.OrderId)
+                .ThenByDescending(o => o.OrderDate)
+                .AsEnumerable()
+                .ToList();
+        }
+
+        public Order? GetOrderById(int orderId)
+        {
+            return _context.Orders
+                .Include(o => o.OrderDetails)
+                .ThenInclude(od => od.Product)
+                .Include(o => o.Staff)
+                .FirstOrDefault(o => o.OrderId == orderId);
+        }
+
+        public Order CreateOrder(Order order)
+        {
+            _context.Orders.Add(order);
+            _context.SaveChanges();
+            return order;
+        }
+
+        public List<Order> GetOrdersHistory()
+        {
+            return _context.Orders
+                .Include(o => o.OrderDetails)
+                .Include(o => o.Staff)
+                .Include(o => o.Customer == null ? null : o.Customer)
+                .Where(o => o.OrderDate.HasValue)
+                .OrderByDescending(o => o.OrderId)
+                .ThenByDescending(o => o.OrderDate)
+                .ToList();
+        }
+
+        public List<Order> SearchOrdersHistory(string searchTerm)
+        {
+            return _context.Orders
+                .Include(o => o.OrderDetails)
+                .Include(o => o.Staff)
+                .Include(o => o.Customer == null ? null : o.Customer)
+                .Where(o => o.OrderDate.HasValue)
+                .Where(o => o.OrderId.ToString() == searchTerm ||
+                            (o.Staff != null && o.Staff.FullName.ToLower().Contains(searchTerm.ToLower()) ||
+                            (o.Customer != null && (o.Customer.FullName.ToLower().Contains(searchTerm.ToLower()) ||
+                            o.Customer.PhoneNumber.ToLower().Contains(searchTerm.ToLower())) ||
+                            o.OrderDetails.Any(od => od.Product.ProductName.ToLower().Contains(searchTerm.ToLower())))))
+                .OrderByDescending(o => o.OrderId)
+                .ThenByDescending(o => o.OrderDate)
+                .ToList();
+        }
+    }
+}

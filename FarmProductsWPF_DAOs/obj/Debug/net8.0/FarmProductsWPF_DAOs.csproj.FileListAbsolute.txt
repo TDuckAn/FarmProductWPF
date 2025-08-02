@@ -1,0 +1,15 @@
+H:\Class\P_R_N\FarmProductsWPF-master\FarmProductsWPF-master\FarmProductsWPF_DAOs\bin\Debug\net8.0\FarmProductsWPF_DAOs.deps.json
+H:\Class\P_R_N\FarmProductsWPF-master\FarmProductsWPF-master\FarmProductsWPF_DAOs\bin\Debug\net8.0\FarmProductsWPF_DAOs.dll
+H:\Class\P_R_N\FarmProductsWPF-master\FarmProductsWPF-master\FarmProductsWPF_DAOs\bin\Debug\net8.0\FarmProductsWPF_DAOs.pdb
+H:\Class\P_R_N\FarmProductsWPF-master\FarmProductsWPF-master\FarmProductsWPF_DAOs\bin\Debug\net8.0\FarmProductsWPF_BOs.dll
+H:\Class\P_R_N\FarmProductsWPF-master\FarmProductsWPF-master\FarmProductsWPF_DAOs\bin\Debug\net8.0\FarmProductsWPF_BOs.pdb
+H:\Class\P_R_N\FarmProductsWPF-master\FarmProductsWPF-master\FarmProductsWPF_DAOs\obj\Debug\net8.0\FarmProductsWPF_DAOs.csproj.AssemblyReference.cache
+H:\Class\P_R_N\FarmProductsWPF-master\FarmProductsWPF-master\FarmProductsWPF_DAOs\obj\Debug\net8.0\FarmProductsWPF_DAOs.GeneratedMSBuildEditorConfig.editorconfig
+H:\Class\P_R_N\FarmProductsWPF-master\FarmProductsWPF-master\FarmProductsWPF_DAOs\obj\Debug\net8.0\FarmProductsWPF_DAOs.AssemblyInfoInputs.cache
+H:\Class\P_R_N\FarmProductsWPF-master\FarmProductsWPF-master\FarmProductsWPF_DAOs\obj\Debug\net8.0\FarmProductsWPF_DAOs.AssemblyInfo.cs
+H:\Class\P_R_N\FarmProductsWPF-master\FarmProductsWPF-master\FarmProductsWPF_DAOs\obj\Debug\net8.0\FarmProductsWPF_DAOs.csproj.CoreCompileInputs.cache
+H:\Class\P_R_N\FarmProductsWPF-master\FarmProductsWPF-master\FarmProductsWPF_DAOs\obj\Debug\net8.0\FarmProd.B95B6C76.Up2Date
+H:\Class\P_R_N\FarmProductsWPF-master\FarmProductsWPF-master\FarmProductsWPF_DAOs\obj\Debug\net8.0\FarmProductsWPF_DAOs.dll
+H:\Class\P_R_N\FarmProductsWPF-master\FarmProductsWPF-master\FarmProductsWPF_DAOs\obj\Debug\net8.0\refint\FarmProductsWPF_DAOs.dll
+H:\Class\P_R_N\FarmProductsWPF-master\FarmProductsWPF-master\FarmProductsWPF_DAOs\obj\Debug\net8.0\FarmProductsWPF_DAOs.pdb
+H:\Class\P_R_N\FarmProductsWPF-master\FarmProductsWPF-master\FarmProductsWPF_DAOs\obj\Debug\net8.0\ref\FarmProductsWPF_DAOs.dll
